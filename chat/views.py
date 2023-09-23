@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from chat.models import Room, Message
+# , Documents
 from django.http import HttpResponse, JsonResponse
 
 # Create your views here.
@@ -48,3 +49,21 @@ def getMessages(request, room):
 
     messages = Message.objects.filter(room=room_details.id)
     return JsonResponse({"messages":list(messages.values())})
+
+# def upload_document(request):
+#     # document = request.POST['document']
+
+#     if request.method == "POST":
+#         # data=request.POST
+#         document = request.FILES.get('document') 
+#         username = request.POST['username']
+#         room_id = request.POST['room_id']
+
+
+#         # username = data.get('username')
+#         # room_id = data.get('room_id')
+
+#     new_message = Documents.objects.create(value=document, user=username, room=room_id)
+#     # , user=username, room=room_id
+#     new_message.save()
+#     return HttpResponse('Message sent successfully')

@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import *
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 @login_required(login_url='/login/')
@@ -121,3 +122,103 @@ def registerclient(request):
 def logout_page(request):
     logout(request)
     return redirect('/login/')
+
+
+def add_profile(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        practice_areas = request.POST.get('practice_areas')
+        experience = request.POST.get('experience')
+        advocate_id = request.POST.get('advocate-id')
+        location = request.POST.get('location')
+        state = request.POST.get('state')
+        languages = request.POST.get('languagaes')
+        profile_pic = request.POST.get('profile-pic')
+        islawyer = request.POST.get('islawyer')
+        isadvocate = request.POST.get('isadvocate')
+        isarbitrator = request.POST.get('isarbitrator')
+        ismediator = request.POST.get('ismediator')
+        isnotaries = request.POST.get('isnotaries')
+        isdocument_writer = request.POST.get('isdocument_writer')
+        bio = request.POST.get('bio')
+        case_summary = request.POST.get('case_summary')
+
+
+        if not User.objects.filter(username = username):
+            messages.info(request, "Username does not exist")
+            return redirect('/add_update_profile/')
+        
+        # else:
+        #     user = User.objects.get(username = username)
+        #     id = user.id
+
+        advocate = Advocate.objects.create(
+            practice_areas = practice_areas,
+            experience = experience,
+            advocate_id = advocate_id,
+            location = location,
+            state = state,
+            languages = languages,
+            profile_pic = profile_pic,
+            islawyer = islawyer,
+            isadvocate = isadvocate,
+            isarbitrator = isarbitrator,
+            ismediator = ismediator,
+            isnotaries = isnotaries,
+            isdocument_writer = isdocument_writer,
+            bio = bio,
+            case_summary = case_summary
+        )
+        advocate.save()
+    return render(request, 'add_profile.html')
+
+
+# from django.shortcuts import get_object_or_404
+
+def add_profile(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        practice_areas = request.POST.get('practice_areas')
+        experience = request.POST.get('experience')
+        advocate_id = request.POST.get('advocate-id')
+        location = request.POST.get('location')
+        state = request.POST.get('state')
+        languages = request.POST.get('languages')
+        profile_pic = request.FILES.get('profile-pic')
+        islawyer = request.POST.get('islawyer')
+        isadvocate = request.POST.get('isadvocate')
+        isarbitrator = request.POST.get('isarbitrator')
+        ismediator = request.POST.get('ismediator')
+        isnotaries = request.POST.get('isnotaries')
+        isdocument_writer = request.POST.get('isdocument_writer')
+        bio = request.POST.get('bio')
+        case_summary = request.POST.get('case_summary')
+
+        # Check if the user exists
+        user = get_object_or_404(User, username=username)
+
+        # Retrieve the associated Advocate object
+        advocate, created = Advocate.objects.get_or_create(user=user)
+
+        # Update the fields with the new data
+        advocate.practice_areas = practice_areas
+        advocate.experience = experience
+        advocate.advocate_id = advocate_id
+        advocate.location = location
+        advocate.state = state
+        advocate.languages = languages
+        advocate.profile_pic = profile_pic
+        islawyer = islawyer,
+        advocate.isadvocate = isadvocate,
+        advocate.isarbitrator = isarbitrator,
+        advocate.ismediator = ismediator,
+        advocate.isnotaries = isnotaries,
+        advocate.isdocument_writer = isdocument_writer,
+        advocate.bio = bio,
+        advocate.case_summary = case_summary
+
+        # Save the changes
+        advocate.save()
+        # return redirect('add_update_profile/')
+
+    return render(request, 'add_profile.html')

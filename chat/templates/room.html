@@ -133,8 +133,34 @@ setInterval(function(){
         <input type="text" name="message" id="message" width="100px" />
         <input type="submit" value="Send">
     </form>
+
+
+    <!-- <form id="post-form">
+      {% csrf_token %}
+      <input type="hidden" name="username" id="username" value="{{username}}"/>
+      <input type="hidden" name="room_id" id="room_id" value="{{room_details.id}}"/>
+      <input type="file" name="document" id="document" width="100px" />
+      <input type="submit" value="upload_document">
+  </form> -->
+
+  <!-- <form enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="hidden" name="username" id="username" value="{{username}}"/>
+    <input type="hidden" name="room_id" id="room_id" value="{{room_details.id}}"/>
+    <input type="file" name="document" id="document" width="100px" />
+    <input type="submit" value="Upload Document">
+</form> -->
+
 </div>
 
+<!-- <form method = 'POST', enctype="multipart/form-data">
+  {% csrf_token %}
+<div class="mb-3">
+  <label for="exampleInputEmail1" class="form-label">Recipe Image</label>
+  <input type="file" class="form-control" name="document">
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form> -->
 
 </body>
 

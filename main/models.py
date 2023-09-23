@@ -56,23 +56,41 @@ class Advocate(models.Model):
 # Accessing individual areas of law:
 # For example, to access the first area of law:
 # first_area = areas_of_law[0][0]
+    # area = (
+    #     ('arbitrator', 'arbitrator'),
+    #     ('advocate', 'advocate'),
+    #     ('mediator', 'mediator'),
+    #     ('notaries', 'notaries'),
+    #     ('document_writer', 'document_writer'),
+    #     ('lawyer', 'lawyer'),
+    # )
 
-    user = models.ForeignKey(User, on_delete = models.SET_NULL, null=True, blank = True )
-    practice_area = models.CharField( max_length = 500, null = True, blank=True)
-    experience = models.IntegerField( null = True, blank=True)
-    advocate_id = models.TextField( unique = True , null = True, blank=True)
+    bio=models.CharField(max_length = 1000, null = True, blank = True)
+    case_summary = models.CharField(max_length = 1000, null = True, blank = True)
+    user = models.ForeignKey(User, on_delete = models.CASCADE, null=True, blank = True )
+    practice_areas = models.CharField( max_length = 1000, null = True, blank=True)
+    experience = models.CharField( null = True, blank=True, max_length = 50)
+    advocate_id = models.CharField( max_length = 100, unique = True , null = True, blank=True)
     location  = models.CharField( max_length=500, null = True, blank=True )
     state = models.CharField( max_length = 100, null = True, blank=True)
     languages = models.CharField(max_length=100, null = True, blank=True)
-    ratings = models.FloatField( null = True, blank=True)
-    ratingno = models.IntegerField( null = True, blank=True)
+    ratings = models.FloatField( default = 0, null = True, blank=True)
+    ratingno = models.IntegerField( default = 0, null = True, blank=True)
     profile_pic = models.ImageField(upload_to = "advocate_pics", null = True, blank=True)
+    isarbitrator = models.CharField(null = True, blank=True, max_length = 50)
+    isadvocate = models.CharField(null = True, blank=True, max_length = 50)
+    ismediator = models.CharField(null = True, blank=True, max_length = 50)
+    isnotaries = models.CharField(null = True, blank=True, max_length = 50)
+    isdocument_writer = models.CharField(null = True, blank=True, max_length = 50)
+    islawyer = models.CharField(default = False, null = True, blank=True, max_length = 50)
+    # null = True, blank=True, max_length = 50
     # islawyer = models.BooleanField( value = True )
     # phone_number = models.PhoneNumberField(_(""))
 # , null=True, blank=True
 
 
 class Client(models.Model):
-    user = models.ForeignKey(User, on_delete = models.SET_NULL, null=True, blank = True )
+    user = models.ForeignKey(User, on_delete = models.CASCADE, null=True, blank = True )
+
 
     # islawyer = models.BooleanField( value = False )

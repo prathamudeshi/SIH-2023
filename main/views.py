@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import *
 from django.shortcuts import get_object_or_404
+from chat.models import Room
 
 # Create your views here.
 @login_required(login_url='/login/')
@@ -179,7 +180,16 @@ def add_profile(request):
 
 # from django.shortcuts import get_object_or_404
 
-def personal_chat(request):
+def personal_chat(request, username):
+
+
+    if Room.objects.filter(name=username).exists():
+        return redirect('/chat/'+username+'/?username='+username)
+    else:
+        new_room = Room.objects.create(name=username)
+        new_room.save()
+        return redirect('/chat/'+username+'/?username='+username)
+
     return redirect('/chat/' + username)
     
 

@@ -23,7 +23,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('req', req),
+    path('req/', req),
     path('login/', login_page ),
     path('logout_page/', logout_page),
     path('register/', register ),
@@ -31,7 +31,7 @@ urlpatterns = [
     path('add_update_profile/', add_profile),
     path('mainpage/<str:username>/', home_page ),
     path('chat/', include('chat.urls')),
-    path('/personal_chat', personal_chat),
+    path('personal_chat/<str:username>/', personal_chat),
 ]
 
 if settings.DEBUG:

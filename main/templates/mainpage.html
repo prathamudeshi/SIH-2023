@@ -173,6 +173,7 @@ a{
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
+    color: black;
 }
 
 .profile {
@@ -183,6 +184,7 @@ a{
     margin-right: 10px;
     margin-bottom: 10px;
     width: calc(33.33% - 10px); /* 3 columns in a row with margin */
+    font-family:'Times New Roman', Times, serif;
 }
 
 .profile img {
@@ -267,7 +269,7 @@ a{
       <ul>
         <Li><a href=''><img src="https://cdn-icons-png.flaticon.com/128/1946/1946436.png"><span> Home</span></a></li>
         <Li><a href='/add_update_profile/'><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"><span> Update Profile</span></a></li>
-        <Li><a href='/req.html/'><img src="https://cdn-icons-png.flaticon.com/128/1067/1067566.png"><span> Services</span></a></li>
+        <Li><a href='/req/'><img src="https://cdn-icons-png.flaticon.com/128/1067/1067566.png"><span> Services</span></a></li>
         <Li><a href='/chat/global/?username=anonymous'><img src="https://cdn-icons-png.flaticon.com/128/3721/3721843.png"><span> Messages</span></a></li>
         <Li><a href='/logout_page/'><img src="https://cdn-icons-png.flaticon.com/128/1828/1828479.png"><span> Log Out</span></a></li>
       </ul>
@@ -282,14 +284,14 @@ a{
     <div class="left-sidebar">
       <div class="sidebar-profile-box">
         <div class="sidebar-profile-info">
-          <a href = "/personal_chat/" ><img src="https://cdn-icons-png.flaticon.com/128/3033/3033143.png"><!--image of the user--></a>
+          <a href = "/personal_chat/{{user.username}}" ><img src="https://cdn-icons-png.flaticon.com/128/3033/3033143.png"><!--image of the user--></a>
           <br>
           <br>
           <br>
           <h1>{{user.username}}</h1><!--user name-->
           <br>
           <br>
-          <h3> Your Location<span></span></h3>
+          <h3> {{advocate.location}}<span></span></h3>
           <br>
           <br>
           <h3> Your Ongoing Orders<span></span></h3>
@@ -303,11 +305,11 @@ a{
         <br>
         <br>
         <div class="sidebar-profile-link">
-          <a href="#"><Img src="https://cdn-icons-png.flaticon.com/128/2435/2435281.png">Order History</a>
+          <a href="#"><Img src="https://cdn-icons-png.flaticon.com/128/2435/2435281.png" style = "height: 30px; width: 30px">Order History</a>
           <br>
           <br>
           <br>
-          <a href="https://doj.gov.in/acts-and-rules/"><img src="https://cdn-icons-png.flaticon.com/128/2912/2912861.png">Learn More About Law</a>
+          <a href="https://doj.gov.in/acts-and-rules/"><img src="https://cdn-icons-png.flaticon.com/128/2912/2912861.png"style = "height: 30px; width: 30px">Learn More About Law</a>
         </div>
 
 
@@ -350,7 +352,7 @@ a{
         <div class="user-profiles">
           <!-- Profile 1 -->
           <div class="profile">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile Photo">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" style = "height: 60px; width: 60px" alt="Profile Photo">
             <h3>Name 1</h3>
             <p>Location: City 1</p>
             <p>Rating: 4.5 Stars</p>
@@ -360,7 +362,7 @@ a{
 
           <!-- Profile 2 -->
           <div class="profile">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile Photo">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"style = "height: 60px; width: 60px" alt="Profile Photo">
             <h3>Name 2</h3>
             <p>Location: City 2</p>
             <p>Rating: 3.0 Stars</p>

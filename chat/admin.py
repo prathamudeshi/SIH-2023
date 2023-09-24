@@ -1,8 +1,7 @@
 from django.contrib import admin
-from .models import Room, Message
-# , Documents
+from .models import Room, Message, Documents
 
 # Register your models here.
 admin.site.register(Room)
 admin.site.register(Message)
-# admin.site.register(Documents)
+admin.site.register(Documents)

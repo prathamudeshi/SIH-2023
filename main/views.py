@@ -8,8 +8,12 @@ from django.shortcuts import get_object_or_404
 
 # Create your views here.
 @login_required(login_url='/login/')
-def home_page(request):
-    return HttpResponse("Finally!!!!!!!!!!!!!!!!!!")
+def home_page(request, username):
+    user = User.objects.get(username=username)
+    advocate = Advocate.objects.get(user=user)
+    print('username')
+    context = {"User":user, "Advocate":advocate}
+    return render(request, 'mainpage.html/', context)
 
 def login_page(request):
 
@@ -32,7 +36,7 @@ def login_page(request):
         
         else:
             login(request, user)
-            return redirect('/')
+            return redirect('/mainpage/'+ username)
 
     return render(request, 'login.html')
         
@@ -175,6 +179,10 @@ def add_profile(request):
 
 # from django.shortcuts import get_object_or_404
 
+def personal_chat(request):
+    return redirect('/chat/' + username)
+    
+
 def add_profile(request):
     if request.method == "POST":
         username = request.POST.get('username')
@@ -222,3 +230,6 @@ def add_profile(request):
         # return redirect('add_update_profile/')
 
     return render(request, 'add_profile.html')
+
+def req(request):
+    return render(request, 'req.html')

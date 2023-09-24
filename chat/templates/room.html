@@ -1,139 +1,156 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 0 20px;
-}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .body {
+      margin: 0 50px;
+      max-width: 800px;
+      padding: 0 20px;
+    }
 
-.container {
-  border: 2px solid #dedede;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
-}
+    .container {
+      border: 2px solid #dedede;
+      background-color: #f1f1f1;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px 0;
+    }
 
-.darker {
-  border-color: #ccc;
-  background-color: #ddd;
-}
+    .darker {
+      border-color: #ccc;
+      background-color: #ddd;
+    }
 
-.container::after {
-  content: "";
-  clear: both;
-  display: table;
-}
+    .container::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
 
-.container img {
-  float: left;
-  max-width: 60px;
-  width: 100%;
-  margin-right: 20px;
-  border-radius: 50%;
-}
+    .container img {
+      float: left;
+      max-width: 60px;
+      width: 100%;
+      margin-right: 20px;
+      border-radius: 50%;
+    }
 
-.container img.right {
-  float: right;
-  margin-left: 20px;
-  margin-right:0;
-}
+    .container img.right {
+      float: right;
+      margin-left: 20px;
+      margin-right: 0;
+    }
 
-.time-right {
-  float: right;
-  color: #aaa;
-}
+    .time-right {
+      float: right;
+      color: #aaa;
+    }
 
-.time-left {
-  float: left;
-  color: #999;
-}
-</style>
-<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    .time-left {
+      float: left;
+      color: #999;
+    }
+
+    .right {
+      /* float : right; */
+      float: right;
+      /* float: top; */
+      align-self: auto;
+      margin-bottom: 1000px;
+      /* margin: 0px 50px; */
+      margin-right: 50px;
+      /* margin-left: -50px; */
+      margin-top: -500px;
+      padding: 0px 20px;
+      width: 450px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 </head>
+
 <body>
+  <div class="body">
+    <h2>{{room}} - DjChat</h2>
 
-<h2>{{room}} - DjChat</h2>
+    <div id="display">
 
-<div id="display">
-
-<!-- <div class="container darker">
+      <!-- <div class="container darker">
   <b>Tom</b><p>Hello Everyone, How Are You Guys Doing?</p>
   <span class="time-left">20th, April 2021</span>
 </div> -->
 
-</div>
+    </div>
 
-<script>
-$(document).ready(function(){
+    <script>
+      $(document).ready(function () {
 
-setInterval(function(){
-    $.ajax({
-        type: 'GET',
-        url : "/chat/getMessages/{{room}}/",
-        success: function(response){
-            console.log(response);
-            $("#display").empty();
-            for (var key in response.messages)
-            {
-                var temp="<div class='container darker'><b>"+response.messages[key].user+"</b><p>"+response.messages[key].value+"</p><span class='time-left'>"+response.messages[key].date+"</span></div>";
+        setInterval(function () {
+          $.ajax({
+            type: 'GET',
+            url: "/chat/getMessages/{{room}}/",
+            success: function (response) {
+              console.log(response);
+              $("#display").empty();
+              for (var key in response.messages) {
+                var temp = "<div class='container darker'><b>" + response.messages[key].user + "</b><p>" + response.messages[key].value + "</p><span class='time-left'>" + response.messages[key].date + "</span></div>";
                 $("#display").append(temp);
-            }
-        },
-        // error: function(response){
-        //     alert('An error occured')
-        // }
-    });
-},1000);
-})
-</script>
+              }
+            },
+            // error: function(response){
+            //     alert('An error occured')
+            // }
+          });
+        }, 1000);
+      })
+    </script>
 
 
-<div class="container">
-    <style>
-    input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    }
+    <div class="container">
+      <style>
+        input[type=text],
+        select {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
 
-    input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    }
+        input[type=submit] {
+          width: 100%;
+          background-color: #4CAF50;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
 
-    input[type=submit]:hover {
-    background-color: #45a049;
-    }
+        input[type=submit]:hover {
+          background-color: #45a049;
+        }
 
-    div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-    }
-    </style>
+        div {
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          padding: 20px;
+        }
+      </style>
 
-    <form id="post-form">
+      <form id="post-form">
         {% csrf_token %}
-        <input type="hidden" name="username" id="username" value="{{username}}"/>
-        <input type="hidden" name="room_id" id="room_id" value="{{room_details.id}}"/>
+        <input type="hidden" name="username" id="username" value="{{username}}" />
+        <input type="hidden" name="room_id" id="room_id" value="{{room_details.id}}" />
         <input type="text" name="message" id="message" width="100px" />
         <input type="submit" value="Send">
-    </form>
-
+      </form>
+    </div>
 
     <!-- <form id="post-form">
       {% csrf_token %}
@@ -142,18 +159,20 @@ setInterval(function(){
       <input type="file" name="document" id="document" width="100px" />
       <input type="submit" value="upload_document">
   </form> -->
-
-  <!-- <form enctype="multipart/form-data">
+    <!-- <div class="right">
+  <form id="upload_form" method = "POST" enctype="multipart/form-data" action = "/chat/upload_document/">
     {% csrf_token %}
     <input type="hidden" name="username" id="username" value="{{username}}"/>
     <input type="hidden" name="room_id" id="room_id" value="{{room_details.id}}"/>
     <input type="file" name="document" id="document" width="100px" />
-    <input type="submit" value="Upload Document">
-</form> -->
+    <input type="submit" value="Upload Document"> -->
+    <!-- <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase"
+                                                type="submit">Register</button>
+</form>
+</div> -->
+  </div>
 
-</div>
-
-<!-- <form method = 'POST', enctype="multipart/form-data">
+  <!-- <form method = 'POST', enctype="multipart/form-data">
   {% csrf_token %}
 <div class="mb-3">
   <label for="exampleInputEmail1" class="form-label">Recipe Image</label>
@@ -162,26 +181,134 @@ setInterval(function(){
 <button type="submit" class="btn btn-primary">Submit</button>
 </form> -->
 
+  <div class="right">
+
+    <div id="dis">
+
+      <!-- <div class="container darker">
+      <b>Tom</b><p>Hello Everyone, How Are You Guys Doing?</p>
+      <span class="time-left">20th, April 2021</span>
+    </div> -->
+
+    </div>
+
+
+    <script>
+      $(document).ready(function () {
+
+        setInterval(function () {
+          $.ajax({
+            type: 'GET',
+            url: "/chat/getDocuments/{{room}}/",
+            success: function (response) {
+              console.log(response);
+              $("#dis").empty();
+              for (var key in response.documents) {
+                var temp = "<div class='container darker'><b>" + response.documents[key].user + "</b><p>" + response.documents[key].value + "</p><span class='time-left'>" + response.documents[key].date + "</span></div>";
+                $("#dis").append(temp);
+              }
+            },
+            // error: function(response){
+            //     alert('An error occured')
+            // }
+          });
+        }, 1000);
+      })
+    </script>
+
+
+    <div class="container">
+      <style>
+        input[type=text],
+        select {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+
+        input[type=submit] {
+          width: 100%;
+          background-color: #4CAF50;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+          background-color: #45a049;
+        }
+
+        div {
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          padding: 20px;
+        }
+      </style>
+
+      <form method="POST" enctype="multipart/form-data" action="/chat/upload_document/">
+        {% csrf_token %}
+        <input type="hidden" name="username" id="username" value="{{username}}" />
+        <input type="hidden" name="room_id" id="room_id" value="{{room_details.id}}" />
+        <input type="file" name="document" id="document" width="100px" />
+        <!-- <input type="submit" value="Upload Document"> -->
+        <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+  </div>
+
+
 </body>
 
+
+
 <script type="text/javascript">
-  $(document).on('submit','#post-form',function(e){
+  $(document).on('submit', '#post-form', function (e) {
     e.preventDefault();
 
     $.ajax({
-      type:'POST',
-      url:'/chat/send',
-      data:{
-          username:$('#username').val(),
-          room_id:$('#room_id').val(),
-          message:$('#message').val(),
-        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+      type: 'POST',
+      url: '/chat/send',
+      data: {
+        username: $('#username').val(),
+        room_id: $('#room_id').val(),
+        message: $('#message').val(),
+        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
       },
-      success: function(data){
-         //alert(data)
+      success: function (data) {
+        //alert(data)
       }
     });
     document.getElementById('message').value = ''
+  });
+</script>
+
+
+<script type="text/javascript">
+  $(document).on('submit', '#upload_form', function (e) {
+    e.preventDefault();
+
+    $.ajax({
+      type: 'POST',
+      url: '/chat/upload_document',
+      data: {
+        username: $('#username').val(),
+        room_id: $('#room_id').val(),
+        message: $('#document').val(),
+        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+      },
+      success: function (data) {
+        //alert(data)
+      }
+    });
+    document.getElementById('document').value = ''
   });
 </script>
 

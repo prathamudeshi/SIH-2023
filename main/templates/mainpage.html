@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Home Page</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mainpage.css">
+
+  <style>
+    *{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background: #f0f2f5;
+    color: #f5f5f5;
+}
+a{
+     text-decoration:none;
+     color:#2c698d; 
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    background-color: #ffffff;
+    padding: 6px 6%;
+    position:  sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.logo img{
+    width: 70px;
+    margin-right: 30px;
+    display: block;
+}
+.navbar-center ul li{
+    display: inline-block;
+    list-style: none;
+}
+.navbar-center ul li a{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin: 5px 8px;
+    padding-right: 10px;
+    position: relative;
+}
+.navbar-center ul li a img{
+    width: 30px
+}
+.navbar-center ul li a::after{
+    content: '';
+    width: 0;
+    height: 2px;
+    background: #2c698d;
+    position: absolute;
+    bottom: -15px;
+    transition: width 0.3s;
+}
+.navbar-center ul li a:hover::after,
+.navbar-center ul li a.active-link::after
+{
+    width: 100%;
+}
+.nav-profile-img{
+    width: 45px;
+    border-radius: 50%;
+    display: block;
+    cursor: pointer;
+    position:relative;
+    height: 45px;
+}
+.online{
+    position: relative;
+}
+.online::after{
+    content:'';
+    width: 7px;
+    height: 7px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+    background: #41db51;
+    position: absolute;
+}
+/*navbar ends main content starts*/
+.container{
+    padding: 20px 6%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.left-sidebar{
+    padding: 20px;
+    flex-basis: 25%;
+    box-align: left;
+}
+.sidebar-profile-box{
+    background: #2c698d;
+}
+.sidebar-profile-info{
+    padding: 0 25px;
+}
+.sidebar-profile-info img{
+    width: 150px;
+    border-radius: 50%;
+    background:#fff;
+    padding:4px;
+    margin-top: -15px;
+    height: 150px;
+}
+.sidebar-profile-info h1{
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffffff;
+}
+.sidebar-profile-info h3{
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+}
+.sidebar-profile-link{
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ffffff;
+}
+.sidebar-profile-link a{
+    flex-basis: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:15px;
+    font-size: 13px;
+    color: #ffffff;
+    border-left: 1px solid#ccc;
+}
+.right-section {
+    box-align:right;
+    background-color: #2c698d;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/* Style the search filter elements */
+.search-filter label {
+    font-weight: bold;
+}
+
+.search-filter input[type="text"],
+.search-filter select {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-filter input[type="checkbox"] {
+    margin-left: 5px;
+}
+
+/* Style user profiles */
+.user-profiles {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.profile {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: calc(33.33% - 10px); /* 3 columns in a row with margin */
+}
+
+.profile img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.profile h3 {
+    margin-top: 10px;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .profile {
+        width: calc(50% - 10px); /* 2 columns in a row with margin */
+    }
+}
+
+@media (max-width: 576px) {
+    .profile {
+        width: 100%; /* 1 column with margin */
+    }
+}
+/* <!-- HTML !--> */
+/* <button class="button-60" role="button">Button 60</button> */
+
+/* CSS */
+#button-60 {
+  align-items: center;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: .375em;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #363636;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  height: 1.2em;
+  justify-content: center;
+  line-height: 1.5;
+  padding: calc(.5em - 1px) 1em;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.button-60:active {
+  border-color: #4a4a4a;
+  outline: 0;
+}
+
+.button-60:focus {
+  border-color: #485fc7;
+  outline: 0;
+}
+
+.button-60:hover {
+  border-color: #b5b5b5;
+}
+
+.button-60:focus:not(:active) {
+  box-shadow: rgba(72, 95, 199, .25) 0 0 0 .125em;
+}
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href=mainpage.html class="logo"><img src=""></a>
+    </div>
+    <div class="navbar-center">
+      <ul>
+        <Li><a href=''><img src="https://cdn-icons-png.flaticon.com/128/1946/1946436.png"><span> Home</span></a></li>
+        <Li><a href='/add_update_profile/'><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"><span> Update Profile</span></a></li>
+        <Li><a href='/req.html/'><img src="https://cdn-icons-png.flaticon.com/128/1067/1067566.png"><span> Services</span></a></li>
+        <Li><a href='/chat/global/?username=anonymous'><img src="https://cdn-icons-png.flaticon.com/128/3721/3721843.png"><span> Messages</span></a></li>
+        <Li><a href='/logout_page/'><img src="https://cdn-icons-png.flaticon.com/128/1828/1828479.png"><span> Log Out</span></a></li>
+      </ul>
+    </div>
+    <div class="navbar-right">
+      <div class="online">
+        <img src="https://cdn-icons-png.flaticon.com/128/3033/3033143.png" class="nav-profile-img" />
+      </div>
+  </nav>
+  <!--navbar part is done-->
+  <div class="container">
+    <div class="left-sidebar">
+      <div class="sidebar-profile-box">
+        <div class="sidebar-profile-info">
+          <a href = "/personal_chat/" ><img src="https://cdn-icons-png.flaticon.com/128/3033/3033143.png"><!--image of the user--></a>
+          <br>
+          <br>
+          <br>
+          <h1>{{user.username}}</h1><!--user name-->
+          <br>
+          <br>
+          <h3> Your Location<span></span></h3>
+          <br>
+          <br>
+          <h3> Your Ongoing Orders<span></span></h3>
+          <br>
+          <br>
+          <h3> Your closed orders<span></span></li>
+          </h3><!--backend-->
+
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="sidebar-profile-link">
+          <a href="#"><Img src="https://cdn-icons-png.flaticon.com/128/2435/2435281.png">Order History</a>
+          <br>
+          <br>
+          <br>
+          <a href="https://doj.gov.in/acts-and-rules/"><img src="https://cdn-icons-png.flaticon.com/128/2912/2912861.png">Learn More About Law</a>
+        </div>
+
+
+        <br>
+      </div>
+    </div>
+      <!--right section-->
+    <div class="right-section">
+        <h2>Search and Filter</h2>
+        <div class="search-filter">
+          <label for="city">City:</label>
+          <input type="text" id="city" placeholder="Enter City">
+
+          <label for="rating">Rating:</label>
+          <select id="rating">
+            <option value="">Select Rating</option>
+            <option value="5">*****</option>
+            <option value="4">****</option>
+            <option value="3">***</option>
+            <option value="2">**</option>
+            <option value="1">*</option>
+          </select>
+
+          <label for="work-type">Type of Work:</label>
+          <select id="work-type">
+            <option value="">Select Type</option>
+            <option value="Criminal Defense">Criminal Defense</option>
+            <option value="Family Law">Family Law</option>
+            <option value="Business Law">Business Law</option>
+            <!-- Add more options as needed -->
+          </select>
+
+          <label for="availability">Availability:</label>
+          <input type="checkbox" id="availability">Available Now
+
+          <button id="button-60">Search</button>
+        </div>
+
+        <!-- Display user profiles here -->
+        <div class="user-profiles">
+          <!-- Profile 1 -->
+          <div class="profile">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile Photo">
+            <h3>Name 1</h3>
+            <p>Location: City 1</p>
+            <p>Rating: 4.5 Stars</p>
+            <p>Type of Work: Criminal Defense</p>
+            <p>Availability: Yes</p>
+          </div>
+
+          <!-- Profile 2 -->
+          <div class="profile">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile Photo">
+            <h3>Name 2</h3>
+            <p>Location: City 2</p>
+            <p>Rating: 3.0 Stars</p>
+            <p>Type of Work: Family Law</p>
+            <p>Availability: No</p>
+          </div>
+
+          <!-- Add more profiles here as needed -->
+        </div>
+      </div>
+    </div>
+    <!--Service provider profiles-->
+
+</body>
+
+</html>

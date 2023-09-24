@@ -23,15 +23,19 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('req', req),
     path('login/', login_page ),
+    path('logout_page/', logout_page),
     path('register/', register ),
     path('register-user/', registerclient ),
     path('add_update_profile/', add_profile),
-    path('', home_page ),
-    path('chat/', include('chat.urls'))
+    path('mainpage/<str:username>/', home_page ),
+    path('chat/', include('chat.urls')),
+    path('/personal_chat', personal_chat),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
